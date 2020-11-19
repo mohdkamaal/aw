@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> ---Please Enter Form Details---</h3>
+    Name: <input type="text" id="name" placeholder="enter Name" onfocus="bg(this);"><br><br>
+    Email: <input type="email" id="email" placeholder="enter mail Address" onfocus="bg(this);"><br><br>
+    Phone: <input type="text" id="phone" placeholder="enter Contact Number" onfocus="bg(this);"><br><br>
+    <input type="submit" onclick="submit(); check();" value="Add/Show"><br><br><br><br>
+
+    <table border="2">
+            
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            
+        </tr>
+    
+        
+    </table>
+
+</body>
+</html>
+
+<script>
+var data = [];
+
+function check(){
+                var regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                var btnClear = document.querySelector('button');
+                var inputs = document.querySelectorAll('input');
+
+
+                if (email.value.match(regExp)){
+                    alert("Data is Entered Successfully, Great work !!!");
+
+                    var table = document.getElementsByTagName('table')[0];
+                  
+                  // add new empty row to the table
+                  // 0 = in the top 
+                  // table.rows.length = the end
+                  // table.rows.length/2+1 = the center
+                  var newRow = table.insertRow(table.rows.length/2+1);
+                  
+                  // add cells to the row
+                  var cel1 = newRow.insertCell(0);
+                  var cel2 = newRow.insertCell(1);
+                  var cel3 = newRow.insertCell(2);
+                  
+                  // add values to the cells
+                  cel1.innerHTML = names;
+                  cel2.innerHTML = emails;
+                  cel3.innerHTML = phones;
+
+                    
+                   
+                }
+                else{
+                    alert("Invalid email address");
+                }
+
+                
+                         }
+
+
+                    btnClear.addEventListener('click', () => {
+                    inputs.forEach(input =>  input.value = '');
+                });
+
+function submit(){
+    
+         emails = document.getElementById("email").value;
+         names = document.getElementById("name").value;
+         phones =document.getElementById("phone").value;
+         data.push({name:names,email:emails, phone:phones});
+
+      
+
+
+
+
+
+
+    
+}
+
+function bg(x){
+    x.style.background = "yellow";
+   
+}
+
+
+
+</script>

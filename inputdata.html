@@ -6,15 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <script>
-            
-            function addRow()
+        function check(){
+                let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                if (email.value.match(regExp)){
+
+                }
+                else{
+                    alert("Invalid email address");
+                }
+                         }
+
+        function addRow()
             {
                 // get input values
                 var name = document.getElementById('name').value;
-                 var email = document.getElementById('email').value;
-                  var phone = document.getElementById('phone').value;
-                
-                  
+                var email = document.getElementById('email').value;
+                var phone = document.getElementById('phone').value;
+                let btnClear = document.querySelector('button');
+                let inputs = document.querySelectorAll('input');
+               
                   // get the html table
                   // 0 = the first table
                   var table = document.getElementsByTagName('table')[0];
@@ -34,23 +44,29 @@
                   cel1.innerHTML = name;
                   cel2.innerHTML = email;
                   cel3.innerHTML = phone;
-                  
+                 
+
+                  btnClear.addEventListener('click', () => {
+                  inputs.forEach(input =>  input.value = '');
+});
+
             }
-            
-        </script>
+    
+
+
+           
+    </script>
 
         
         
     </head>
 
     <body>
-        <div>
-        <form id="form" style="text-align: center;">
+        <div id="form" style="text-align: center;">
         Name: <input type="text" name="name" id="name" /><br/><br/>
-        Email: <input type="text" name="email" id="email" /><br/><br/>
+        Email: <input type="text"  name="email" id="email" required /><br/><br/>
         Phone: <input type="text" name="phone" id="phone" /><br/><br/>
-        <button onclick="addRow();">Submit & Show </button><br/><br/>
-    </form>
+        <button onclick=" check(); addRow(); ">Submit & Show </button><br/><br/>
         <table border="2">
             
             <tr>
